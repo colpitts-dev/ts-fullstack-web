@@ -1,0 +1,48 @@
+{
+  "name": "ts-fullstack-web",
+  "version": "0.1.0",
+  "author": "Adam Colpitts",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.14.2"
+  },
+  "packageManager": "yarn@1.22.19",
+  "scripts": {
+    "install": "yarn --cwd client install && yarn --cwd server install",
+    "lint": "cd client && yarn lint && cd ../server && yarn lint",
+    "prettier": "prettier --ignore-path .gitignore \"**/*.+(js|json|ts|tsx)\"",
+    "format": "yarn prettier --list-different",
+    "format:fix": "yarn prettier --write",
+    "build": "yarn --cwd client build && yarn --cwd server build",
+    "dev": "concurrently --names client,server \"yarn --cwd client dev\" \"yarn --cwd server dev\"",
+    "validate": "yarn --cwd client validate && yarn --cwd server validate",
+    "clean": "rm -fr node_modules &&  cd client && rm -fr node_modules && cd ../server && rm -fr node_modules",
+    "prestart": "yarn build",
+    "start": "yarn --cwd server start"
+  },
+  "dependencies": {
+    "concurrently": "^7.6.0",
+    "cross-env": "^7.0.3",
+    "prettier": "latest"
+  },
+  "prettier": {
+    "arrowParens": "avoid",
+    "bracketSameLine": false,
+    "bracketSpacing": true,
+    "embeddedLanguageFormatting": "auto",
+    "htmlWhitespaceSensitivity": "css",
+    "insertPragma": false,
+    "jsxSingleQuote": false,
+    "printWidth": 80,
+    "proseWrap": "always",
+    "quoteProps": "as-needed",
+    "requirePragma": false,
+    "semi": false,
+    "singleAttributePerLine": false,
+    "singleQuote": true,
+    "tabWidth": 2,
+    "trailingComma": "all",
+    "useTabs": false,
+    "vueIndentScriptAndStyle": false
+  }
+}
